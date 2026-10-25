@@ -1,3 +1,4 @@
+
 import './HeroContent.css'
 
 const EMAIL = 'majoguvi1225@gmail.com'
@@ -19,12 +20,14 @@ export default function HeroContent() {
         <a
           className="btn btn--primary"
           href="#proyectos"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Ver Proyectos
         </a>
-        <a className="btn btn--link" href={`mailto:${EMAIL}`}>
+
+        <a
+          className="btn btn--link"
+          href={`mailto:${EMAIL}`}
+        >
           {EMAIL}
         </a>
       </div>
