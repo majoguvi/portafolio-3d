@@ -1,0 +1,52 @@
+:root {
+  /* Paleta personal */
+  --wine: #5e2037;
+  --rose: #c48a9c;
+  --blush: #e8bcc4;
+  --terracotta: #bf6350;
+  --cream: #ebdccf;
+  --sand: #d4aa6c;
+  --mustard: #d9a12a;
+  --olive: #6f7a5a;
+  --cocoa: #4e2323;
+
+  /* Tema nocturno (derivado de la paleta) */
+  --night: #170810;
+  --night-soft: #2a0f1c;
+  --text: #f6ece3;
+  --text-muted: rgba(246, 236, 227, 0.78);
+
+  /* Roles dentro de la página */
+  --bg: var(--night);
+  --ink: var(--text);
+  --accent: var(--sand);
+
+    /* Tipografías: cambia aquí para probar otras */
+  --font-title: 'DM Serif Display', Georgia, serif;
+  --font-display: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

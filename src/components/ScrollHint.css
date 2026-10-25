@@ -1,0 +1,76 @@
+.scroll-hint {
+  position: absolute;
+  z-index: 3;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.scroll-hint:hover {
+  color: var(--text);
+}
+
+.scroll-hint:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.scroll-hint__track {
+  position: relative;
+  width: 1.5rem;
+  height: 2.4rem;
+  border: 2px solid rgba(246, 236, 227, 0.4);
+  border-radius: 999px;
+}
+
+.scroll-hint__dot {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--sand);
+  transform: translateX(-50%);
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0.9rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint__dot {
+    animation: none;
+  }
+}
+
+/* En celular la niña ocupa la parte baja, así que se oculta */
+@media (max-width: 900px) {
+  .scroll-hint {
+    display: none;
+  }
+}

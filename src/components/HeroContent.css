@@ -1,0 +1,170 @@
+.hero-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: clamp(1.5rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 3rem; /* espacio para el menú */
+  /* No bloquea el arrastre del 3D; solo los enlaces reciben clics */
+  pointer-events: none;
+}
+
+/* Capas (dentro de .hero): nombre (1) < Canvas con la niña (2) < textos y botones (3) */
+.hero-content__line,
+.hero-content__name,
+.hero-content__title,
+.hero-content__actions {
+  position: relative;
+  animation: hero-fade-up 0.9s ease-out both;
+}
+
+.hero-content__line {
+  z-index: 3;
+  width: 3.5rem;
+  height: 3px;
+  margin-bottom: 1.5rem;
+  border-radius: 999px;
+  background: var(--olive);
+}
+
+/* Nombre gigante: ocupa casi todo el ancho y queda detrás de la niña */
+.hero-content__name {
+  z-index: 1;
+  width: fit-content;
+  font-family: var(--font-title);
+  font-weight: 400; /* DM Serif Display solo trae peso normal */
+  font-size: clamp(4rem, min(15vw, 24vh), 14rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--text);
+  animation-delay: 0.1s;
+}
+
+.hero-content__name em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sand);
+}
+
+.hero-content__title {
+  z-index: 3;
+  max-width: 26rem;
+  margin-top: 1.75rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  animation-delay: 0.25s;
+}
+
+.hero-content__actions {
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+  animation-delay: 0.4s;
+}
+
+.btn {
+  pointer-events: auto;
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 3px;
+}
+
+.btn--primary {
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--wine);
+  box-shadow: 0 10px 28px -10px rgba(232, 188, 196, 0.45);
+}
+
+.btn--primary::after {
+  content: '→';
+  margin-left: 0.5rem;
+}
+
+.btn--primary:hover {
+  background: var(--sand);
+  transform: translateY(-2px);
+}
+
+.btn--link {
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--rose);
+  color: var(--text);
+}
+
+.btn--link:hover {
+  border-color: var(--sand);
+  color: var(--sand);
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content__line,
+  .hero-content__name,
+  .hero-content__title,
+  .hero-content__actions {
+    animation: none;
+  }
+  .btn {
+    transition: none;
+  }
+}
+
+/* Celular y tablet: nombre arriba, la niña en medio y los botones abajo */
+@media (max-width: 900px) {
+  .hero-content {
+    left: 1.25rem;
+    right: 1.25rem;
+    padding-top: 5.5rem;
+    padding-bottom: 1.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .hero-content__line {
+    display: none;
+  }
+
+  .hero-content__name {
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+
+  .hero-content__title {
+    margin-top: 1rem;
+  }
+
+  .hero-content__actions {
+    margin-top: auto;
+    justify-content: center;
+  }
+}
